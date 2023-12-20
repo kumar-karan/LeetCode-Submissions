@@ -11,26 +11,26 @@
  */
 class Solution {
 public:
-    TreeNode* bstFromPreorder(vector<int>& preorder) {
-    vector<int>inorder, v;
-    v=preorder;
-    sort(v.begin(), v.end());
-    inorder=v;
-    if(preorder.size()==0){return NULL;}
-    map<int, int>m;
-    for(int i=0; i<inorder.size(); i++){
-        m[inorder[i]]=i;
+
+    TreeNode* build(int &i, int min, int max, vector<int> &preorder)
+    {
+        if(i>= preorder.size())
+            return NULL;
+        TreeNode* root = NULL;
+        if(preorder[i] > min && preorder[i] < max)
+        {
+            root = new TreeNode(preorder[i++]);
+            root->left = build(i, min, root->val, preorder);
+            root->right = build(i, root->val, max, preorder);
+
+        }
+        return root;
     }
-    TreeNode* root=formtree(preorder, 0, preorder.size()-1, inorder, 0, inorder.size()-1, m);
-    return root;
-}
-TreeNode* formtree(vector<int>& preorder, int pst, int pen, vector<int>& inorder, int inst, int inen, map<int, int>& m){
-    if(pst>pen || inst>inen){return NULL;}
-    TreeNode* root=new TreeNode(preorder[pst]);
-    int pos=m[preorder[pst]];
-    int lft=pos-inst;
-    root->left=formtree(preorder, pst+1, pst+lft, inorder, inst, pos-1, m);
-    root->right=formtree(preorder, pst+lft+1, pen, inorder, pos+1, inen, m);
-    return root;
-}
+    TreeNode* bstFromPreorder(vector<int>& preorder) 
+    {
+        int min = INT_MIN, max = INT_MAX;
+        int i=0;
+        return build(i, min, max, preorder);
+        
+    }
 };
