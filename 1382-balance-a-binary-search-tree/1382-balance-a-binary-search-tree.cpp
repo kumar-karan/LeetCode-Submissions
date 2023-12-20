@@ -30,14 +30,11 @@ public:
         root -> right = buildTree(in, mid+1, end);
         return root;
     }
-
     TreeNode* balanceBST(TreeNode* root) 
     {
         vector<int> in;
         inorder(root, in);
-        
         // Build balanced BST using inorder Traversal
-        
         return buildTree(in, 0, in.size()-1);
         
     }
