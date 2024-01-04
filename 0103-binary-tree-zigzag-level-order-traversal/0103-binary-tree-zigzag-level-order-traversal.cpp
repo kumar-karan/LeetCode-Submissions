@@ -30,10 +30,10 @@ public:
 
                 int index;
                 if(flag == true)
-               index = i;
+                    index = i;
 
                 else
-                index = length - i -1;
+                    index = length - i -1;
                 level[index] = front ->val;
 
                 if(front ->left)  q.push(front ->left);
