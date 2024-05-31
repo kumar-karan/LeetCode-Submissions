@@ -104,27 +104,23 @@ class Solution
     Node* reverseDLL(Node * head)
     {
         //Your code here
-        if(head == NULL || head-> next == NULL) return head;
         Node* prev = NULL;
+        if(head == NULL || head -> next == NULL)    return head;
+        
         Node* curr = head;
-        Node* forw = curr -> next;
         
         while(curr != NULL)
         {
-            prev = curr -> prev;
+            prev= curr -> prev;
             curr -> prev = curr -> next;
             curr -> next = prev;
+            
             curr = curr -> prev;
-            
-            // curr -> next = prev;
-            // curr -> prev = forw;
-            
-            // prev = curr;
-            // curr = curr -> next;
-            // forw = curr -> next;
-            
         }
-        return prev-> prev;
+        
+        
+        return prev -> prev;
+        
     }
 };
 
