@@ -34,13 +34,12 @@ public:
             {
                 return {mpp[more],i};
             }
-            mpp[a]= i;
+            mpp[a]= i; // yha check
 
         }
         return {};
 
  
-
 
         /*
 
