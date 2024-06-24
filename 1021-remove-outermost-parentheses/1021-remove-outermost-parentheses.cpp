@@ -6,8 +6,21 @@ public:
         if(s == "") return s;
         
         string ans = "";
-
+        int c=0;
         for(auto ch: s)
+        {
+            if(ch == ')') c--;
+            if(c != 0)
+                ans += ch;
+            if(ch == '(') c++;
+        }
+        return ans;
+
+
+
+        /*
+        for(auto ch: s)
+
         {
             if(st.empty())
                 st.push(ch);
@@ -30,6 +43,6 @@ public:
             
         }
         return ans;
-
+*/
     }
 };
