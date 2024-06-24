@@ -7,11 +7,10 @@ public:
         while(i>=0)
         {
             if((num[i] -'0') % 2 != 0)
-                break;
+                return num.substr(0,i+1);
             i--;
         }
         if(i == -1) return "";
-        return num.substr(0,i+1);
 
     }
 };
