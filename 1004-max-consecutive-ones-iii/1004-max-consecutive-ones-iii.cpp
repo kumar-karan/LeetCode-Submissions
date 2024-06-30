@@ -20,9 +20,7 @@ public:
                 if(nums[l] == 0) zero--;
                 l++;
             }
-            if(maxi < n-l)
             r++;
-            else return maxi;
         }
         return maxi;   
     }
