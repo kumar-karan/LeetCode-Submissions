@@ -9,19 +9,19 @@ public:
         {
             mp[s[r]]++;
             maxf = max(maxf, mp[s[r]]);
-            while((r-l+1) - maxf > k)
+            if((r-l+1) - maxf > k)
             {
                 mp[s[l]]--;
-                maxf = 0;
-                for(char j = 'A'; j <= 'Z'; j++)
-                    maxf = max(maxf,mp[j]);
+                // maxf = 0;
+                // for(char j = 'A'; j <= 'Z'; j++)
+                //     maxf = max(maxf,mp[j]);
                 l++;
             }
             if((r-l+1) - maxf <= k)
             {
                 maxi = max(maxi, r-l+1);
-                r++;
             }
+                r++;
         }
 
         return maxi;
