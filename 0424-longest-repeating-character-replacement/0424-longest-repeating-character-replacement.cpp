@@ -20,8 +20,8 @@ public:
             if((r-l+1) - maxf <= k)
             {
                 maxi = max(maxi, r-l+1);
+                r++;
             }
-            r++;
         }
 
         return maxi;
