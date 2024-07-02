@@ -29,7 +29,7 @@ public:
                     else return false;
                 }
                 else 
-                if(five > 3)
+                if(five >= 3)
                     five = five -3;
                 else return false;
             }
