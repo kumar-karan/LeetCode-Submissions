@@ -10,8 +10,6 @@ public:
             if(i>maxIndex) return false;
             maxIndex = max(maxIndex, i+nums[i]);
         }
-        if(maxIndex >= n)
-            return true;
-        else return false;
+        return true;
     }
 };
