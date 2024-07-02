@@ -7,31 +7,28 @@ public:
         int twen =0;
         bool ans;
 
-        for(auto x: bills)
+        for(auto bill: bills)
         {
-            if(x == 5)
+            if(bill == 5)
                 five++;
-            else if(x == 10)
+            else if(bill == 10)
             {
+                if(five ==0) return false;
+                five--;
                 ten++;
-                if(five >0) 
-                    five--;
-                else
-                    return false;
             }
-            else if(x == 20)
+            else if(bill == 20)
             {
-                twen++;
-                if(ten > 0)
+                if(five >0 && ten>0)
                 {
                     ten--;
-                    if(five >0) five --;
-                    else return false;
+                    five--;
                 }
-                else 
-                if(five >= 3)
+                else if(five>=3)
                     five = five -3;
-                else return false;
+                else 
+                return false;
+                twen ++;
             }
         }
         return true;
