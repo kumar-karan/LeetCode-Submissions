@@ -1,3 +1,7 @@
+#include <vector>
+#include <climits>
+using namespace std;
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -10,36 +14,29 @@
  */
 class Solution {
 public:
-    int getIndex (ListNode* head , ListNode* curr)
-    {
-        int len =0;
-        while(head != curr)
-        {
-            len++;
-            head = head-> next;
-        }
-        return len;
-    }
-    vector<int> nodesBetweenCriticalPoints(ListNode* head) 
-    {
-         if (!head || !head->next || !head->next->next) return {-1, -1};
+    vector<int> nodesBetweenCriticalPoints(ListNode* head) {
+        if (!head || !head->next || !head->next->next) return {-1, -1}; // Edge case: Less than 3 nodes
+
         ListNode* prev = head;
         ListNode* curr = head->next;
-        ListNode* forward = curr-> next;
+        ListNode* forward = curr->next;
 
         vector<int> criticalPoints;
-        vector<int> result(2, -1);
-        while(forward != NULL)
-        {
+        vector<int> result(2, -1); // To store the minimum and maximum distances
+
+        int index = 1; // Start from the second node
+        while (forward != nullptr) {
             if ((curr->val < prev->val && curr->val < forward->val) || 
                 (curr->val > prev->val && curr->val > forward->val)) {
-                criticalPoints.push_back(getIndex(head, curr));
+                criticalPoints.push_back(index);
             }
 
-            prev = prev->next;
-            curr = curr->next;
+            prev = curr;
+            curr = forward;
             forward = forward->next;
+            index++;
         }
+
         if (criticalPoints.size() < 2) {
             return {-1, -1}; // Less than 2 critical points
         }
