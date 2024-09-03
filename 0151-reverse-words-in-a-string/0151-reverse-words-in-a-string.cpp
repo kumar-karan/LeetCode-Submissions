@@ -26,3 +26,5 @@ public:
         return ans;
     }
 };
+
+// ans =blue is sky the
